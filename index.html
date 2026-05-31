@@ -959,36 +959,16 @@
 const targetDate = new Date("2026-05-31T17:45:00+07:00");
 
 function updateCountdown() {
-
   const now = new Date();
   const diff = targetDate - now;
 
   if (diff <= 0) {
-
-    document.getElementById("countdown").innerHTML = `
-<div class="flex gap-4 text-center">
-  <div class="bg-white/20 backdrop-blur-md rounded-xl p-4 min-w-[90px]">
-    <div class="text-4xl font-bold">${days}</div>
-    <div class="text-sm">Hari</div>
-  </div>
-
-  <div class="bg-white/20 backdrop-blur-md rounded-xl p-4 min-w-[90px]">
-    <div class="text-4xl font-bold">${hours}</div>
-    <div class="text-sm">Jam</div>
-  </div>
-
-  <div class="bg-white/20 backdrop-blur-md rounded-xl p-4 min-w-[90px]">
-    <div class="text-4xl font-bold">${minutes}</div>
-    <div class="text-sm">Menit</div>
-  </div>
-
-  <div class="bg-white/20 backdrop-blur-md rounded-xl p-4 min-w-[90px]">
-    <div class="text-4xl font-bold">${seconds}</div>
-    <div class="text-sm">Detik</div>
-  </div>
-</div>
-`;
-
+    document.getElementById("countdown").innerHTML =
+      "<span class='text-2xl font-bold'>SUDAH DIBUKA 🎉</span>";
+    
+    // tampilkan app kalau mau otomatis
+    document.getElementById("countdown-screen").style.display = "none";
+    document.getElementById("app").style.display = "flex";
     return;
   }
 
@@ -1003,6 +983,3 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
-</script>
-  </body>
-</html>
