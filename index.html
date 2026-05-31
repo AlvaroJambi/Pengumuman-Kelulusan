@@ -55,7 +55,7 @@
   </head>
   <body class="h-full">
     <div
-      id="app"
+      id="app" style="display:none;"
       class="h-full w-full overflow-auto flex items-center justify-center p-4"
       style="
         background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -922,6 +922,33 @@
           }
         }
       })();
-    </script>
+    <script>
+const targetDate = new Date("2026-06-02T22:00:00+07:00");
+
+function updateCountdown() {
+
+  const now = new Date();
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+
+    document.getElementById("countdown-screen").style.display = "none";
+    document.getElementById("app").style.display = "flex";
+
+    return;
+  }
+
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const minutes = Math.floor((diff % 3600000) / 60000);
+  const seconds = Math.floor((diff % 60000) / 1000);
+
+  document.getElementById("countdown").innerHTML =
+    `${days}H ${hours}J ${minutes}M ${seconds}D`;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
   </body>
 </html>
