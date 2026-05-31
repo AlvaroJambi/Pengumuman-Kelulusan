@@ -4,6 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cek Kelulusan Siswa</title>
+    
+    <script>
+    function isAllowedBrowser() {
+  const ua = navigator.userAgent;
+  const isChrome =
+    window.chrome &&
+    navigator.vendor === "Google Inc." &&
+    ua.includes("Chrome") &&
+    !ua.includes("Edg") &&
+    !ua.includes("OPR");
+
+  return isChrome;
+}
+    </script> 
+  </head>    
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
     <script src="/_sdk/element_sdk.js"></script>
@@ -955,8 +970,9 @@
           }
         }
       })();
+    </script>
     <script>
-const targetDate = new Date("2026-05-31T18:45:00+07:00");
+    const targetDate = new Date("2026-05-31T18:45:00+07:00");
 
 function updateCountdown() {
   const now = new Date();
@@ -965,8 +981,7 @@ function updateCountdown() {
   if (diff <= 0) {
     document.getElementById("countdown").innerHTML =
       "<span class='text-2xl font-bold'>SUDAH DIBUKA 🎉</span>";
-    
-    // tampilkan app kalau mau otomatis
+
     document.getElementById("countdown-screen").style.display = "none";
     document.getElementById("app").style.display = "flex";
     return;
@@ -983,3 +998,4 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+</script>
