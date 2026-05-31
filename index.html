@@ -92,8 +92,8 @@
       id="app" style="display:none;"
       class="h-full w-full overflow-auto flex items-center justify-center p-4"
       style="
-        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-          url('https://i.ibb.co.com/ZphwXcB1/Whats-App-Image-2026-05-29-at-11-28-26.jpg')
+        background: 
+          url('Background.jpg')
             center/cover no-repeat;
       "
     >
@@ -966,8 +966,29 @@ function updateCountdown() {
 
   if (diff <= 0) {
 
-    document.getElementById("countdown-screen").style.display = "none";
-    document.getElementById("app").style.display = "flex";
+    document.getElementById("countdown").innerHTML = `
+<div class="flex gap-4 text-center">
+  <div class="bg-white/20 backdrop-blur-md rounded-xl p-4 min-w-[90px]">
+    <div class="text-4xl font-bold">${days}</div>
+    <div class="text-sm">Hari</div>
+  </div>
+
+  <div class="bg-white/20 backdrop-blur-md rounded-xl p-4 min-w-[90px]">
+    <div class="text-4xl font-bold">${hours}</div>
+    <div class="text-sm">Jam</div>
+  </div>
+
+  <div class="bg-white/20 backdrop-blur-md rounded-xl p-4 min-w-[90px]">
+    <div class="text-4xl font-bold">${minutes}</div>
+    <div class="text-sm">Menit</div>
+  </div>
+
+  <div class="bg-white/20 backdrop-blur-md rounded-xl p-4 min-w-[90px]">
+    <div class="text-4xl font-bold">${seconds}</div>
+    <div class="text-sm">Detik</div>
+  </div>
+</div>
+`;
 
     return;
   }
