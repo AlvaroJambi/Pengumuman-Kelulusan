@@ -734,8 +734,12 @@
         resultArea.classList.remove("hidden");
         lucide.createIcons();
 
-        if (isLulus) spawnConfetti();
-      }
+        if (isLulus) {
+    spawnConfetti();
+
+    const music = document.getElementById("bgMusic");
+    music.play();
+}
 
       function spawnConfetti() {
         const container = document.getElementById("confetti-container");
