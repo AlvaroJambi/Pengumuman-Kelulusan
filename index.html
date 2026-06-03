@@ -54,6 +54,10 @@
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   </head>
   <body class="h-full">
+
+<audio id="bgMusic" loop>
+  <source src="musik.mp3" type="audio/mpeg">
+</audio>
      <div
       id="app"
       class="h-full w-full overflow-auto flex items-center justify-center p-4"
@@ -742,7 +746,8 @@
         music.play();
     }
 }
-      function spawnConfetti() {
+      
+        function spawnConfetti() {
         const container = document.getElementById("confetti-container");
         if (!container) return;
         const colors = ["#10b981", "#3b82f6", "#f59e0b", "#ec4899", "#8b5cf6"];
@@ -774,124 +779,7 @@
         secondary_action_color: "#6b7280",
         font_family: "Poppins",
         font_size: 16,
-      };
-
-      window.elementSdk.init({
-        defaultConfig: {
-          ...defaultConfig,
-          foundation_name: "Jami Al Falah Haji Masjchun Sofwan",
-          logo_url:
-            "https://i.ibb.co.com/pjMvVCrs/Whats-App-Image-2026-05-29-at-09-14-00.jpg",
-        },
-        onConfigChange: async (config) => {
-          document.getElementById("page-title").textContent =
-            config.page_title || defaultConfig.page_title;
-          document.getElementById("school-name").textContent =
-            config.school_name || defaultConfig.school_name;
-          document.getElementById("foundation-name").textContent =
-            config.foundation_name || "Jami Al Falah Haji Masjchun Sofwan";
-
-          // Update logo
-          const logoUrl = config.logo_url;
-          const logoImg = document.getElementById("logo-img");
-          const logoIcon = document.getElementById("logo-icon");
-          if (logoUrl && logoUrl.trim()) {
-            logoImg.src = logoUrl;
-            logoImg.style.display = "block";
-            logoIcon.style.display = "none";
-            logoImg.onerror = () => {
-              logoImg.style.display = "none";
-              logoIcon.style.display = "block";
-            };
-          } else {
-            logoImg.style.display = "none";
-            logoIcon.style.display = "block";
-          }
-
-          const font = config.font_family || defaultConfig.font_family;
-          const size = config.font_size || defaultConfig.font_size;
-          document.body.style.fontFamily = `${font}, Poppins, sans-serif`;
-          document.getElementById("page-title").style.fontSize = `${
-            size * 1.5
-          }px`;
-          document.getElementById("school-name").style.fontSize = `${
-            size * 0.85
-          }px`;
-
-          document.body.style.color =
-            config.text_color || defaultConfig.text_color;
-        },
-        mapToCapabilities: (config) => ({
-          recolorables: [
-            {
-              get: () => config.primary_color || defaultConfig.primary_color,
-              set: (v) => {
-                config.primary_color = v;
-                window.elementSdk.setConfig({ primary_color: v });
-              },
-            },
-            {
-              get: () => config.surface_color || defaultConfig.surface_color,
-              set: (v) => {
-                config.surface_color = v;
-                window.elementSdk.setConfig({ surface_color: v });
-              },
-            },
-            {
-              get: () => config.text_color || defaultConfig.text_color,
-              set: (v) => {
-                config.text_color = v;
-                window.elementSdk.setConfig({ text_color: v });
-              },
-            },
-            {
-              get: () => config.accent_color || defaultConfig.accent_color,
-              set: (v) => {
-                config.accent_color = v;
-                window.elementSdk.setConfig({ accent_color: v });
-              },
-            },
-            {
-              get: () =>
-                config.secondary_action_color ||
-                defaultConfig.secondary_action_color,
-              set: (v) => {
-                config.secondary_action_color = v;
-                window.elementSdk.setConfig({ secondary_action_color: v });
-              },
-            },
-          ],
-          borderables: [],
-          fontEditable: {
-            get: () => config.font_family || defaultConfig.font_family,
-            set: (v) => {
-              config.font_family = v;
-              window.elementSdk.setConfig({ font_family: v });
-            },
-          },
-          fontSizeable: {
-            get: () => config.font_size || defaultConfig.font_size,
-            set: (v) => {
-              config.font_size = v;
-              window.elementSdk.setConfig({ font_size: v });
-            },
-          },
-        }),
-        mapToEditPanelValues: (config) =>
-          new Map([
-            ["page_title", config.page_title || defaultConfig.page_title],
-            ["school_name", config.school_name || defaultConfig.school_name],
-            [
-              "foundation_name",
-              config.foundation_name || "Jami Al Falah Haji Masjchun Sofwan",
-            ],
-            [
-              "logo_url",
-              config.logo_url ||
-                "https://i.ibb.co.com/pjMvVCrs/Whats-App-Image-2026-05-29-at-09-14-00.jpg",
-            ],
-          ]),
-      });
+      }
 
       lucide.createIcons();
     </script>
